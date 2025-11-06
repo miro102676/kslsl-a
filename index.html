@@ -1,0 +1,1475 @@
+ <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЦИТАДЕЛЬ | Выход на 200-300к в месяц</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --black: #000000;
+            --dark: #0a0a0a;
+            --darker: #111111;
+            --dark-gray: #1a1a1a;
+            --gray: #2a2a2a;
+            --light-gray: #3a3a3a;
+            --white: #ffffff;
+            --accent: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --shadow-hover: rgba(0, 0, 0, 0.7);
+            --gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            --accent-red: #FF4757;
+            --accent-green: #2ED573;
+            --accent-blue: #3742FA;
+            --accent-gold: #FFD700;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Splash Screen */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1.5s ease-out;
+        }
+
+        .splash-logo {
+            font-size: 12rem;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: logoReveal 3s ease-out forwards;
+            position: relative;
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .splash-subtitle {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s ease-out 2s forwards;
+            max-width: 800px;
+            line-height: 1.3;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes logoReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            40% {
+                opacity: 1;
+                transform: scale(1.05);
+                text-shadow: 0 0 80px rgba(255, 255, 255, 0.9);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.1);
+                text-shadow: 0 0 100px rgba(255, 255, 255, 1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                text-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 50%, var(--gray) 0%, transparent 70%);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out 3.2s forwards;
+            width: 100%;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 8rem;
+            font-weight: 900;
+            letter-spacing: 10px;
+            color: var(--white);
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: logoFinal 1.5s ease-out 3.5s forwards;
+            line-height: 1;
+            display: block;
+        }
+
+        @keyframes logoFinal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-line {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 6px;
+            background: var(--white);
+            border-radius: 3px;
+            animation: lineReveal 1.5s ease-out 4.2s forwards;
+        }
+
+        @keyframes lineReveal {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 80%;
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out 4.5s forwards;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 3rem;
+            max-width: 900px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out 4.7s forwards;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 25px 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            text-shadow: none;
+        }
+
+        /* Improved Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 40px;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px var(--shadow-hover);
+        }
+
+        .btn-large {
+            padding: 22px 50px;
+            font-size: 1.2rem;
+        }
+
+        /* Ivan's Section - COMPLETELY FIXED */
+        .ivan-section {
+            padding: 100px 0;
+            background: var(--black);
+            position: relative;
+        }
+
+        .ivan-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, var(--gray) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .ivan-hero {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        /* FIXED: Ivan Photo Container - No borders anywhere */
+        .ivan-photo-container {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* NO BORDERS ANYWHERE */
+            border: none !important;
+            outline: none !important;
+        }
+
+        .ivan-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none;
+            outline: none;
+        }
+
+        .ivan-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .case-info {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .case-header {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 20px;
+        }
+
+        .case-niche {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--dark-gray);
+            border-radius: 20px;
+            border: 1px solid var(--gray);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .case-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .point-card {
+            background: var(--dark-gray);
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px var(--shadow);
+            border: 1px solid var(--gray);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .point-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .point-a::before {
+            background: var(--accent-red);
+        }
+
+        .point-b::before {
+            background: var(--accent-green);
+        }
+
+        .point-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .point-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px var(--shadow-hover);
+        }
+
+        .point-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .point-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .point-a .point-icon {
+            background: linear-gradient(135deg, var(--accent-red), #FF6B81);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+        }
+
+        .point-b .point-icon {
+            background: linear-gradient(135deg, var(--accent-green), #7BED9F);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(46, 213, 115, 0.3);
+        }
+
+        .point-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            line-height: 1.2;
+        }
+
+        .point-list {
+            list-style: none;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .point-list li {
+            padding: 12px 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid transparent;
+        }
+
+        .point-a .point-list li {
+            border-left-color: var(--accent-red);
+        }
+
+        .point-b .point-list li {
+            border-left-color: var(--accent-green);
+        }
+
+        .point-list li:hover {
+            transform: translateX(5px);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Improved CTA Buttons */
+        .ivan-cta {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #212529;
+            font-weight: 800;
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            border: none;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid #f8f9fa;
+            font-weight: 800;
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 0;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, var(--gray) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+            position: relative;
+            display: inline-block;
+            color: var(--white);
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--white);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            line-height: 1.6;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefit-card {
+            background: var(--dark-gray);
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--gray);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px var(--shadow-hover);
+        }
+
+        .benefit-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            line-height: 1.2;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .benefit-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 1px;
+        }
+
+        .benefit-content {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 1.1rem;
+            flex-grow: 1;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        /* Navigation */
+        .navigation {
+            padding: 120px 0;
+            background-color: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navigation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, var(--gray) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .nav-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-category {
+            background: var(--dark-gray);
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 15px 40px var(--shadow);
+            border: 1px solid var(--gray);
+            transition: all 0.4s ease;
+        }
+
+        .nav-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px var(--shadow-hover);
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--white);
+            display: inline-block;
+            color: var(--white);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .nav-item:hover {
+            color: var(--white);
+            transform: translateX(3px);
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, var(--gray) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .price-card {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 40px 35px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 20px 50px var(--shadow);
+            border: 1px solid var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            color: var(--white);
+        }
+
+        .price-note {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .features-list {
+            text-align: left;
+            margin: 25px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .feature-item {
+            padding: 12px 15px 12px 30px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item::before {
+            content: '✓';
+            position: absolute;
+            left: 10px;
+            font-weight: 700;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .urgency-note {
+            margin: 20px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-size: 0.9rem;
+            color: var(--white);
+            padding: 10px 15px;
+            background: var(--gray);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .payment-options {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* NEW: Ivan Info Section */
+        .ivan-info-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .ivan-info-card {
+            background: var(--dark-gray);
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow);
+            border: 1px solid var(--gray);
+            text-align: center;
+        }
+
+        .ivan-info-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .ivan-info-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.5;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ivan-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .ivan-stat {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ivan-stat-value {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .ivan-stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* FIXED: Mobile Responsive - No borders, simplified */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 1000px;
+            }
+            
+            .splash-logo {
+                font-size: 10rem;
+            }
+            
+            .splash-subtitle {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                font-size: 7rem;
+            }
+            
+            .nav-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .case-points {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+            
+            .logo {
+                font-size: 5rem;
+            }
+            
+            .splash-logo {
+                font-size: 7rem;
+            }
+            
+            .splash-subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+            
+            .nav-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 90vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-card {
+                padding: 35px 25px;
+            }
+            
+            .price {
+                font-size: 3rem;
+            }
+            
+            .logo {
+                font-size: 4rem;
+            }
+            
+            .splash-logo {
+                font-size: 5rem;
+            }
+            
+            .splash-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .ivan-section {
+                padding: 80px 0;
+            }
+            
+            /* FIXED: Mobile photo - NO BORDERS */
+            .ivan-photo-container {
+                max-width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                border: none !important;
+                outline: none !important;
+            }
+            
+            .ivan-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .point-card {
+                padding: 25px 20px;
+                transform: none !important;
+            }
+            
+            .point-header {
+                margin-bottom: 20px;
+                gap: 15px;
+            }
+            
+            .point-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .point-title {
+                font-size: 1.5rem;
+            }
+            
+            .point-list li {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+                transform: none !important;
+            }
+            
+            .ivan-cta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                padding: 16px 25px;
+            }
+
+            .ivan-info-title {
+                font-size: 1.8rem;
+            }
+
+            .ivan-info-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .ivan-stat-value {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .btn, .btn-large {
+                width: 100%;
+                padding: 16px 25px;
+            }
+            
+            .price-card {
+                padding: 30px 20px;
+            }
+            
+            .price {
+                font-size: 2.8rem;
+            }
+            
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .splash-logo {
+                font-size: 3.5rem;
+            }
+            
+            .splash-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            /* FIXED: Small mobile photo */
+            .ivan-photo-container {
+                border-radius: 8px;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            }
+            
+            .ivan-stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-niche {
+                font-size: 1.1rem;
+                padding: 10px 18px;
+            }
+            
+            .point-card {
+                padding: 20px 15px;
+            }
+            
+            .point-title {
+                font-size: 1.3rem;
+            }
+            
+            .point-list li {
+                font-size: 0.9rem;
+                padding: 8px 10px;
+            }
+            
+            .benefits-grid {
+                gap: 20px;
+            }
+            
+            .benefit-card {
+                padding: 25px 20px;
+            }
+            
+            .benefit-title {
+                font-size: 1.4rem;
+            }
+            
+            .nav-categories {
+                gap: 25px;
+            }
+            
+            .nav-title {
+                font-size: 1.3rem;
+            }
+
+            .ivan-info-title {
+                font-size: 1.6rem;
+            }
+
+            .ivan-info-subtitle {
+                font-size: 1rem;
+            }
+
+            .ivan-stat-value {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .splash-logo {
+                font-size: 3rem;
+            }
+            
+            .splash-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* FIXED: Extra small mobile */
+            .ivan-photo-container {
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            
+            .point-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">ЦИТАДЕЛЬ</div>
+        <div class="splash-subtitle">Самый быстрый способ выхода на первые 200-300к</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <div class="logo">ЦИТАДЕЛЬ</div>
+                    <div class="logo-line"></div>
+                </div>
+                <h1>Теперь ты можешь перестать быть нищим</h1>
+                <p class="hero-subtitle">ЦИТАДЕЛЬ — самый простой и быстрый способ выйти на первые 200-300к дохода в онлайне. Без воды, только рабочие методы.</p>
+                <a href="#pricing" class="btn btn-large">
+                    <i class="fas fa-rocket"></i>
+                    Начать зарабатывать
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ivan's Section - FIXED -->
+    <section class="ivan-section">
+        <div class="container">
+            <!-- Simple Photo - No borders -->
+            <div class="ivan-hero">
+                <div class="ivan-photo-container">
+                    <img src="иван.jpg" alt="Иван Гаврилюк - успешный ученик Цитадели" class="ivan-photo" onerror="this.style.display='none'">
+                </div>
+            </div>
+            
+            <!-- Ivan Info -->
+            <div class="ivan-info-section">
+                <div class="ivan-info-card">
+                    <h3 class="ivan-info-title">Иван "Whygako" Гаврилюк</h3>
+                    <p class="ivan-info-subtitle">Самый успешный кейс ученика Цитадели. В 17 лет переехал в Москву, прокачал закрытый канал и вышел на стабильный доход $3000+ в месяц.</p>
+                    
+                    <div class="ivan-stats-grid">
+                        <div class="ivan-stat">
+                            <div class="ivan-stat-value">$3500</div>
+                            <div class="ivan-stat-label">Доход за июнь</div>
+                        </div>
+                        <div class="ivan-stat">
+                            <div class="ivan-stat-value">17 лет</div>
+                            <div class="ivan-stat-label">Возраст переезда</div>
+                        </div>
+                        <div class="ivan-stat">
+                            <div class="ivan-stat-value">$3000+</div>
+                            <div class="ivan-stat-label">Стабильный доход</div>
+                        </div>
+                        <div class="ivan-stat">
+                            <div class="ivan-stat-value">Млн+</div>
+                            <div class="ivan-stat-label">Проекты в рублях</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="ivan-content">
+                <div class="case-info">
+                    <div class="case-header">
+                        <div class="case-niche">Ниша: Продажи</div>
+                    </div>
+                    
+                    <div class="case-points">
+                        <div class="point-card point-a">
+                            <div class="point-header">
+                                <div class="point-icon">А</div>
+                                <h3 class="point-title">Точка А<br><span style="font-size: 1rem; opacity: 0.8;">До обучения</span></h3>
+                            </div>
+                            <ul class="point-list">
+                                <li>Непонимание как монетизировать навыки</li>
+                                <li>Отсутствие стабильного дохода</li>
+                                <li>Нет понимания ценности своих услуг</li>
+                                <li>Работа за копейки без перспектив</li>
+                                <li>Неумение продавать себя и услуги</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="point-card point-b">
+                            <div class="point-header">
+                                <div class="point-icon">Б</div>
+                                <h3 class="point-title">Точка Б<br><span style="font-size: 1rem; opacity: 0.8;">После обучения</span></h3>
+                            </div>
+                            <ul class="point-list">
+                                <li>Стабильный доход $3500+ в месяц</li>
+                                <li>Проекты на миллионы рублей</li>
+                                <li>Переезд в Москву в 17 лет</li>
+                                <li>Прокачанный закрытый канал</li>
+                                <li>Понимание ценности и упаковки услуг</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="ivan-cta">
+                        <a href="https://t.me/OtziviCitadel" class="btn cta-primary">
+                            <i class="fas fa-comment"></i>
+                            Посмотреть все отзывы
+                        </a>
+                        <a href="https://t.me/m/WNiL3UICZGIy" class="btn cta-secondary">
+                            <i class="fas fa-rocket"></i>
+                            Вступить в Цитадель
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Что внутри Цитадели</h2>
+            <p class="section-subtitle">Полная система для выхода на высокий доход в онлайне</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3 class="benefit-title">Выбор своего дела</h3>
+                    <div class="benefit-content">
+                        Эфиры о быстром старте в прибыльных нишах + интервью с экспертами, которые зарабатывают 200.000+ рублей в месяц.
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3 class="benefit-title">Окупаемость за 24 часа</h3>
+                    <div class="benefit-content">
+                        Как найти скрытые активы и возможности для заработка. 2 рабочих способа окупить вложения в первый же день.
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3 class="benefit-title">Продажи на высокие чеки</h3>
+                    <div class="benefit-content">
+                        Поиск клиентов, переписки, звонки и закрытие сделок от 100.000 рублей. Вся система от А до Я.
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3 class="benefit-title">Создание онлайн-бизнеса</h3>
+                    <div class="benefit-content">
+                        Многолетний опыт упакованный в систему. Создание продуктов, продажи через психологию, построение воронок.
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3 class="benefit-title">Медиа и масштабирование</h3>
+                    <div class="benefit-content">
+                        Как вырасти с 100.000 до 1.000.000 рублей в месяц. Инструменты масштабирования любого бизнеса.
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3 class="benefit-title">Психология и установки</h3>
+                    <div class="benefit-content">
+                        Фундамент для роста дохода. Замена деструктивных установок на те, что помогают зарабатывать.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="navigation">
+        <div class="container">
+            <h2 class="section-title">Навигация по Цитадели</h2>
+            <p class="section-subtitle">Структурированный контент для быстрого роста</p>
+            
+            <div class="nav-categories">
+                <div class="nav-category">
+                    <h3 class="nav-title">Для новичков</h3>
+                    <div class="nav-items">
+                        <div class="nav-item">Как быстро выбрать нишу и сразу стартовать в ней</div>
+                        <div class="nav-item">Техника 5 единичек (посмотреть как можно раньше)</div>
+                        <div class="nav-item">Как зарабатывать 3.500+/день с помощью Цитадели</div>
+                        <div class="nav-item">Сарафанное радио выведет тебя на 100к/месяц</div>
+                        <div class="nav-item">Как выйти на 1.000.000 дохода с 50к рублей за 1 месяц</div>
+                    </div>
+                </div>
+                
+                <div class="nav-category">
+                    <h3 class="nav-title">Продажи</h3>
+                    <div class="nav-items">
+                        <div class="nav-item">Гайд на холодную рассылку</div>
+                        <div class="nav-item">Гайд на построение оффера и УТП</div>
+                        <div class="nav-item">Полный эфир про продажу на созвоне на чек 250к+</div>
+                        <div class="nav-item">Как найти клиентов на 500.000+ в живую</div>
+                        <div class="nav-item">Как построить свое агентство в услуговом бизнесе</div>
+                    </div>
+                </div>
+                
+                <div class="nav-category">
+                    <h3 class="nav-title">Медиа</h3>
+                    <div class="nav-items">
+                        <div class="nav-item">Почему без медийки тяжело зарабатывать миллионы</div>
+                        <div class="nav-item">Гайд на залетные ролики в TikTok</div>
+                        <div class="nav-item">Как снимать видео без монтажа и попадать в рекомендации</div>
+                        <div class="nav-item">Что по настоящему цепляет людей в коротких роликах</div>
+                        <div class="nav-item">Техника адаптации контента</div>
+                    </div>
+                </div>
+                
+                <div class="nav-category">
+                    <h3 class="nav-title">Установки</h3>
+                    <div class="nav-items">
+                        <div class="nav-item">Как избавиться от выгорания</div>
+                        <div class="nav-item">Как начать делать если заебался</div>
+                        <div class="nav-item">Уничтожь жалость к себе раз и навсегда</div>
+                        <div class="nav-item">Конкуренции не существует</div>
+                        <div class="nav-item">Идти до конца и никогда не сдаваться</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Вступить в Цитадель</h2>
+            <p class="section-subtitle">Инвестиция, которая окупится в первый же день</p>
+            
+            <div class="price-card">
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.8px;">Полный доступ к Цитадели</h3>
+                <div class="price">11.990 ₽</div>
+                <p class="price-note">Единоразовый платёж за доступ навсегда</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">Чат единомышленников и крутые связи</div>
+                    <div class="feature-item">Вся информация по повышению дохода любыми способами</div>
+                    <div class="feature-item">Эфиры, оффлайн-ивенты (сходки), онлайн-турниры</div>
+                    <div class="feature-item">Гайд на переезд в другие страны даже если тебе нет 18 лет</div>
+                    <div class="feature-item">Личная поддержка от кураторов</div>
+                </div>
+                
+                <p class="urgency-note">Цена растёт на 1000₽ с каждым 10-м участником</p>
+                <p class="payment-options">Место можно забронировать за 2-3к или оплатить частями</p>
+                
+                <a href="https://t.me/m/WNiL3UICZGIy" class="btn btn-large">
+                    <i class="fas fa-rocket"></i>
+                    ВСТУПИТЬ В ЦИТАДЕЛЬ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const splashScreen = document.getElementById('splashScreen');
+            
+            setTimeout(() => {
+                splashScreen.style.opacity = '0';
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 1500);
+            }, 3500);
+            
+            // Force remove borders from Ivan photo
+            const ivanContainer = document.querySelector('.ivan-photo-container');
+            const ivanPhoto = document.querySelector('.ivan-photo');
+            
+            if (ivanContainer) {
+                ivanContainer.style.border = 'none';
+                ivanContainer.style.outline = 'none';
+            }
+            if (ivanPhoto) {
+                ivanPhoto.style.border = 'none';
+                ivanPhoto.style.outline = 'none';
+                ivanPhoto.onerror = function() {
+                    this.style.display = 'none';
+                };
+            }
+        });
+    </script>
+</body>
+</html>
